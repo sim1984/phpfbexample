@@ -3,8 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>@yield('title', 'Пример Web приложения на Firebird')</title>
-        <meta name="description" content="@yield('description', 'Пример Web приложения на Firebird')" />
+        <title>@yield('title', 'Example Web application with Firebird')</title>
+        <meta name="description" content="@yield('description', 'Example Web application with Firebird')" />
         @section('meta', '')
 
         
