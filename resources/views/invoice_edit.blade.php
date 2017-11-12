@@ -1,6 +1,6 @@
 @extends('example')
 
-@section('title','Редактирование счета')
+@section('title','Invoice editor')
 
 @section('body')
 
@@ -9,7 +9,7 @@
         
         @if($error_msg)
             <div class="alert alert-danger">
-                <strong>Ошибка!</strong> {{ $error_msg }}
+                <strong>Error!</strong> {{ $error_msg }}
             </div>           
         @endif
         
