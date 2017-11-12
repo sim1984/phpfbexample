@@ -1,12 +1,12 @@
 @extends('master')
 
-@section('title','Пример работы с Firebird')
+@section('title','Laravel with Firebird')
 
 
 @section('body')
 
 
-<h1>Пример</h1>
+<h1>Example</h1>
 
 @if(Session::has('message'))
     <div class="alert alert-success">
@@ -14,7 +14,7 @@
     </div>
 @endif
 
-<p>Пример работы с Firebird.<br/>
+<p>Laravel with Firebird.<br/>
 
 </p>
 
