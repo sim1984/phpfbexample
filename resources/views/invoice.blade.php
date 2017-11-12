@@ -1,10 +1,10 @@
 @extends('example')
 
-@section('title','Счет фактуры')
+@section('title','Invoices')
 
 @section('body')
 
-    <h1>Счет фактуры</h1>
+    <h1>Invoices</h1>
     <p>
         {!! $filter !!}
         {!! $grid !!}
