@@ -7,7 +7,7 @@ use Firebird\Eloquent\Model;
 class Invoice extends Model {
 
     /**
-     * таблица связанная с моделью
+     * Таблица, связанная с моделью
      *
      * @var string
      */
@@ -21,20 +21,22 @@ class Invoice extends Model {
     protected $primaryKey = 'INVOICE_ID';
 
     /**
-     * Indicates if the model should be timestamped.
+     * Наша модель не имеет временной метки
      *
      * @var bool
      */
     public $timestamps = false;
 
     /**
-     * имя последовательности для генерации первичного ключа
+     * Имя последовательности для генерации первичного ключа
+	 *
      * @var string 
      */
     protected $sequence = 'GEN_INVOICE_ID';
 
     /**
      * Заказачик
+	 *
      * @return \App\Customer
      */
     public function customer() {
@@ -43,7 +45,8 @@ class Invoice extends Model {
 
     /**
      * Позиции счёт фактуры
-     * @return \AppInvoiceLine[]
+	 
+     * @return \App\InvoiceLine[]
      */
     public function lines() {
         return $this->hasMany('App\InvoiceLine', 'INVOICE_ID');
