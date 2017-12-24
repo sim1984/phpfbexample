@@ -1,42 +1,53 @@
 <?php
 
+/*
+ * Invoice Model
+ * 
+ * © Simonov Denis
+ */
+
 namespace App;
 
 use Firebird\Eloquent\Model;
 
+/**
+ * Invoice Model
+ * 
+ * @author Simonov Denis <sim-mail@list.ru>
+ */
 class Invoice extends Model {
 
     /**
-     * Таблица, связанная с моделью
+     * Table associated with the model
      *
      * @var string
      */
     protected $table = 'INVOICE';
 
     /**
-     * Первичный ключ модели
+     * Primary key of the model
      *
      * @var string
      */
     protected $primaryKey = 'INVOICE_ID';
 
     /**
-     * Наша модель не имеет временной метки
+     * Our model does not have a timestamp
      *
      * @var bool
      */
     public $timestamps = false;
 
     /**
-     * Имя последовательности для генерации первичного ключа
-	 *
+     * The name of the sequence for generating the primary key
+     * 
      * @var string 
      */
     protected $sequence = 'GEN_INVOICE_ID';
 
     /**
-     * Заказачик
-	 *
+     * Customer
+     *
      * @return \App\Customer
      */
     public function customer() {
@@ -44,8 +55,8 @@ class Invoice extends Model {
     }
 
     /**
-     * Позиции счёт фактуры
-	 
+     * Invoice lines
+     * 	 
      * @return \App\InvoiceLine[]
      */
     public function lines() {
@@ -53,7 +64,7 @@ class Invoice extends Model {
     }
     
     /**
-     * Оплата 
+     * Payed
      */
     public function pay() {
         $connection = $this->getConnection();

@@ -2,6 +2,8 @@
 
 /*
  * Invoice controller
+ * 
+ * © Simonov Denis
  */
 
 namespace App\Http\Controllers;
@@ -12,6 +14,11 @@ use App\Customer;
 use App\Product;
 use App\InvoiceLine;
 
+/**
+ * Invoice Controller
+ * 
+ * @author Simonov Denis <sim-mail@list.ru>
+ */
 class InvoiceController extends Controller {
 
     /**
@@ -38,12 +45,12 @@ class InvoiceController extends Controller {
         // Field, caption, sorted
         // For the date we set an additional function that converts
         // the date into a string
-        $grid->add('INVOICE_DATE|strtotime|date[d.m.Y H:i:s]', 'Date', true);
+        $grid->add('INVOICE_DATE|strtotime|date[Y-m-d H:i:s]', 'Date', true);
 	// for money we will set a format with two decimal places
         $grid->add('TOTAL_SALE|number_format[2,., ]', 'Amount');
         $grid->add('customer.NAME', 'Customer');
 	// Boolean printed as Yes/No
-        $grid->add('PAID', 'Оплачено')
+        $grid->add('PAID', 'Paid')
                 ->cell(function( $value, $row) {
                     return $value ? 'Yes' : 'No';
                 });
@@ -196,9 +203,9 @@ class InvoiceController extends Controller {
 
         if ($mode == 'modify') {
 	    // Add buttons to view, edit and delete records
-            $grid->edit('/invoice/editline', 'Редактирование', 'modify|delete');
-			// Добавляем кнопку добавления заказчика
-            $grid->link('/invoice/editline?invoice_id=' . $invoice->INVOICE_ID, "Добавление позиции", "TR");
+            $grid->edit('/invoice/editline', 'Edit', 'modify|delete');
+	   // Add customer button
+            $grid->link('/invoice/editline?invoice_id=' . $invoice->INVOICE_ID, "Add invoice item", "TR");
         }
 
         return $grid;

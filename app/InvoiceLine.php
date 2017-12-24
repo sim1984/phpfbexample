@@ -1,51 +1,81 @@
 <?php
 
+/*
+ * Invoice item model
+ * 
+ * © Simonov Denis
+ */
+
 namespace App;
 
 use Firebird\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
+
+/**
+ * Invoice item model
+ * 
+ * @author Simonov Denis <sim-mail@list.ru>
+ */
 class InvoiceLine extends Model {
 
     /**
-     * таблица связанная с моделью
+     * Table associated with the model
      *
      * @var string
      */
     protected $table = 'INVOICE_LINE';
 
     /**
-     * Первичный ключ модели
+     * Primary key of the model
      *
      * @var string
      */
     protected $primaryKey = 'INVOICE_LINE_ID';
 
     /**
-     * Indicates if the model should be timestamped.
+     * Our model does not have a timestamp
      *
      * @var bool
      */
     public $timestamps = false;
 
     /**
-     * имя последовательности для генерации первичного ключа
+     * The name of the sequence for generating the primary key
+     * 
      * @var string 
      */
     protected $sequence = 'GEN_INVOICE_LINE_ID';
+	
+    /**
+     * Array of names of computed fields
+     *
+     * @var array
+     */
     protected $appends = ['SUM_PRICE'];
 
+    /**
+     * Product
+     * 
+     * @return \App\Product
+     */	
     public function product() {
         return $this->belongsTo('App\Product', 'PRODUCT_ID');
     }
 
+    /**
+     * Amount by item
+     *
+     * @return double
+     */		
     public function getSumPriceAttribute() {
         return $this->SALE_PRICE * $this->QUANTITY;
     }
 
     /**
-     * Добавление объекта модели в БД
-     * Переопределяем этот метод, т.к. в данном случаем мы работаем с помощью ХП 
+     * Adding a model object to the database
+     * Override this method, because in this case, 
+     * we work with a stored procedure 
      * 
      * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @param  array  $options
@@ -80,8 +110,9 @@ class InvoiceLine extends Model {
     }
 
     /**
-     * Сохранение изменений текущего экземпляра модели в БД
-     * Переопределяем этот метод, т.к. в данном случаем мы работаем с помощью ХП 
+     * Saving changes to the current model instance in the database
+     * Override this method, because in this case, 
+     * we work with a stored procedure 
      *
      * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @param  array  $options
@@ -113,8 +144,9 @@ class InvoiceLine extends Model {
     }
 
     /**
-     * Удаление текщего экземпляра модели в БД
-     * Переопределяем этот метод, т.к. в данном случаем мы работаем с помощью ХП 
+     * Deleting the current model instance from the database
+     * Override this method, because in this case, 
+     * we work with a stored procedure 
      *
      * @return void
      */

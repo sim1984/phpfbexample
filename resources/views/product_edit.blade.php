@@ -1,6 +1,6 @@
 @extends('example')
 
-@section('title','Редактирование продукта')
+@section('title','Edit product')
 
 @section('body')
 

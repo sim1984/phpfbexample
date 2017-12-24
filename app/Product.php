@@ -1,37 +1,48 @@
 <?php
 
+/*
+ * Product Model
+ * 
+ * © Simonov Denis
+ */
+
 namespace App;
 
 use Firebird\Eloquent\Model;
 
+/**
+ * Product Model
+ * 
+ * @author Simonov Denis <sim-mail@list.ru>
+ */
 class Product extends Model
 {
     /**
-     * таблица связанная с моделью
+     * Table associated with the model
      *
      * @var string
      */
     protected $table = 'PRODUCT';
     
     /**
-     * Первичный ключ модели
+     * Primary key of the model
      *
      * @var string
      */
     protected $primaryKey = 'PRODUCT_ID';    
     
     /**
-     * Indicates if the model should be timestamped.
+     * Our model does not have a timestamp
      *
      * @var bool
      */
     public $timestamps = false;  
     
     /**
-     * имя последовательности для генерации первичного ключа
+     * The name of the sequence for generating the primary key
+     * 	 
      * @var string 
      */
-    protected $sequence = 'GEN_PRODUCT_ID';
-      
+    protected $sequence = 'GEN_PRODUCT_ID';     
 }
 

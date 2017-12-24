@@ -11,7 +11,7 @@
 |
 */
 
-// Корневой маршрут
+// root route
 Route::get('/', 'InvoiceController@showInvoices');
 
 Route::get('/customers', 'CustomerController@showCustomers');

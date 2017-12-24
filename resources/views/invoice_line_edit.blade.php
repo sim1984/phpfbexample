@@ -1,6 +1,6 @@
 @extends('example')
 
-@section('title','Редактирование позиции')
+@section('title','Edit invoice item')
 
 @section('body')
 
