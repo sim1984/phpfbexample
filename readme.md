@@ -1,1 +1,1 @@
-# Пример Web приложения с использованием фреймворка Laravel и СУБД Firebird
+# Examlpe of Web Applications with PHP and Firebird
